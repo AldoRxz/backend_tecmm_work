@@ -1,0 +1,1131 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "servicio programas de estudio",
+      "description": "Esta api es la encargada del manejo de la información relacionada con los programas de estudio"
+    },
+    "host": "developer.tecmm.mx:3000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Carreras",
+            "description": "seccion dedicada al CRUD de la tabla Carreras"
+        }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/carrera":{
+            "get": {
+                "tags": ["Carreras"],
+                "summary": "Obtener catalogo de la tabla Carreras",
+                "description": "Obtener catalogo de la tabla Carreras",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Carreras",
+                        "schema": {
+                            "$ref": "#/definitions/carreras"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Carreras"],
+                "summary": "crear un registro en la tabla Carreras",
+                "description": "crear un registro en la tabla Carreras",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/carreras_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Carreras"],
+                "summary": "actualizar un registro en la tabla Carreras",
+                "description": "actualizar un registro en la tabla Carreras",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/carreras"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Carreras"],
+                "summary": "eliminar un registro de la tabla Carreras",
+                "description": "eliminar un registro de la tabla Carreras",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idCarrera",
+                        "description": "ID de la tabla Carreras que el cliente desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/modalidad":{
+            "get": {
+                "tags": ["Modalidades"],
+                "summary": "Obtener catalogo de la tabla Modalidades",
+                "description": "Obtener catalogo de la tabla Modalidades",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Carreras",
+                        "schema": {
+                            "$ref": "#/definitions/modalidades" 
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Modalidades"],
+                "summary": "crear un registro en la tabla Modalidades",
+                "description": "crear un registro en la tabla Modalidades",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir de modalidades para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/modalidades_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Modalidades"],
+                "summary": "actualizar un registro en la tabla Modalidades",
+                "description": "actualizar un registro en la tabla Modalidades",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/modalidades"  
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Modalidades"],
+                "summary": "eliminar un registro de la tabla Modalidades",
+                "description": "eliminar un registro de la tabla Modalidades",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idModalidad",
+                        "description": "ID de la tabla Modalidades que la modalidad que desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/modalidad/id:{idModalidad}":{
+            "get": {
+                "tags": ["Modalidades"],
+                "summary": "Obtener datos de un registro de la tabla Modalidades",
+                "description": "Obtener datos de un registro de la tabla Modalidades",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Carreras",
+                        "schema": {
+                            "$ref": "#/definitions/modalidades" 
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/especialidad":{
+            "get": {
+                "tags": ["Especialidades"],
+                "summary": "Obtener catalogo de la tabla Especialidades",
+                "description": "Obtener catalogo de la tabla Especialidades",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Especialidades",
+                        "schema": {
+                            "$ref": "#/definitions/especialidades" 
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Especialidades"],
+                "summary": "crear un registro en la tabla Especialidades",
+                "description": "crear un registro en la tabla Especialidades",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir de especialidades para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/especialidades_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Especialidades"],
+                "summary": "actualizar un registro en la tabla Especialidades",
+                "description": "actualizar un registro en la tabla Especialidades",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/especialidades"  
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Especialidades"],
+                "summary": "eliminar un registro de la tabla Especialidades",
+                "description": "eliminar un registro de la tabla Especialidades",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idEspecialidad",
+                        "description": "ID de la tabla Especialidades de la especialidad que desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/especialidad/id:{idEspecialidad}":{
+            "get": {
+                "tags": ["Especialidades"],
+                "summary": "Obtener datos de una especialidad de la tabla Especialidades",
+                "description": "Obtener datos de una especialidad de la tabla Especialidades",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Especialidades",
+                        "schema": {
+                            "$ref": "#/definitions/especialidades" 
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },  
+        "/programa":{
+            "get": {
+                "tags": ["Programas"],
+                "summary": "Obtener catalogo de la tabla Programas",
+                "description": "Obtener catalogo de la tabla Programas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Programas",
+                        "schema": {
+                            "$ref": "#/definitions/programas" 
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Programas"],
+                "summary": "crear un registro en la tabla Programas",
+                "description": "crear un registro en la tabla Programas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir de programa para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/programas_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Programas"],
+                "summary": "actualizar un registro en la tabla Programas",
+                "description": "actualizar un registro en la tabla Programas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/programas"  
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Programas"],
+                "summary": "eliminar un registro de la tabla Programas",
+                "description": "eliminar un registro de la tabla Programas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idProgramas",
+                        "description": "ID de la tabla Programas de el programa que desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/programa/id:{idPrograma}":{
+            "get": {
+                "tags": ["Programas"],
+                "summary": "Obtener datos de un programa de la tabla Programas",
+                "description": "Obtener datos de un programa de la tabla Programas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Programas",
+                        "schema": {
+                            "$ref": "#/definitions/programas" 
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/oferta":{
+            "get": {
+                "tags": ["Ofertas"],
+                "summary": "Obtener catalogo de la tabla Ofertas",
+                "description": "Obtener catalogo de la tabla Ofertas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Programas",
+                        "schema": {
+                            "$ref": "#/definitions/ofertas" 
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Ofertas"],
+                "summary": "crear un registro en la tabla Ofertas",
+                "description": "crear un registro en la tabla Ofertas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir de programa para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ofertas_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Ofertas"],
+                "summary": "actualizar un registro en la tabla Ofertas",
+                "description": "actualizar un registro en la tabla Ofertas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ofertas"  
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Ofertas"],
+                "summary": "eliminar un registro de la tabla Ofertas",
+                "description": "eliminar un registro de la tabla Ofertas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idOferta",
+                        "description": "ID de la tabla Ofertas de el programa que desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/oferta/id:id{idOferta}":{
+            "get": {
+                "tags": ["Ofertas"],
+                "summary": "Obtener datos de una oferta de la tabla Ofertas",
+                "description": "Obtener datos de una oferta de la tabla Ofertas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Programas",
+                        "schema": {
+                            "$ref": "#/definitions/ofertas" 
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "carreras_post": {
+            "properties":{
+                "nombreCorto":{
+                    "type": "string",
+                    "example": "Tecmm Zap."
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "Tecmm Zapopan"
+                }
+            }
+        },
+        "carreras": {
+            "properties":{
+                "idCarrera":{
+                    "type": "integer",
+                    "example": 6
+                },
+                "nombreCorto":{
+                    "type": "string",
+                    "example": "Tecmm Zap."
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "Tecmm Zapopan"
+                }
+            }
+        },
+        "modalidades": {
+            "properties":{
+                "idModalidad":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "ESCOLARIZADA"
+                }
+            }
+        },
+        "modalidades_post": {
+            "properties":{          
+                "nombre":{
+                    "type": "string",
+                    "example": "Semiescolarizada"
+                }
+            }
+        },
+        "especialidades": {
+            "properties":{
+                "idEspecialidad":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "idUnidad":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "codigo":{
+                    "type": "string",
+                    "example": "LTE"
+                },
+                "nombreCorto":{
+                    "type": "string",
+                    "example": "apps moviles"
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "desarrollo y publicacion de apps moviles"
+                },
+                "creditos":{
+                    "type": "integer",
+                    "example": 40
+                },
+                "estatus":{
+                    "type": "boolean",
+                    "example": 1
+                }
+            }
+        },
+        "especialidades_post": {
+            "properties":{
+                "idUnidad":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "codigo":{
+                    "type": "string",
+                    "example": "LTE"
+                },
+                "nombreCorto":{
+                    "type": "string",
+                    "example": "apps moviles"
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "desarrollo y publicacion de apps moviles"
+                },
+                "creditos":{
+                    "type": "integer",
+                    "example": 40
+                },
+                "estatus":{
+                    "type": "boolean",
+                    "example": 1
+                }
+            }
+        },
+        "programas": {
+            "properties":{
+                "idPrograma":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "idCarrera":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "idModalidad":{
+                    "type": "integer",
+                    "example": 1
+                },
+                "idUnidad":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "estatus":{
+                    "type": "boolean",
+                    "example": 1
+                }
+            }
+        },
+        "programas_post": {
+            "properties":{
+                "idCarrera":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "idModalidad":{
+                    "type": "integer",
+                    "example": 1
+                },
+                "idUnidad":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "estatus":{
+                    "type": "boolean",
+                    "example": 1
+                }
+            }
+        },
+        "ofertas": {
+            "properties":{
+                "idPrograma":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "Oferta reiscripciones"
+                }, 
+                "version":{
+                    "type": "string",
+                    "example": "2024A"
+                },
+                "estatus":{
+                    "type": "boolean",
+                    "example": 1
+                }
+            }
+        },
+        "ofertas_post": {
+            "properties":{
+                "idPrograma":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "Oferta reiscripciones"
+                }, 
+                "version":{
+                    "type": "string",
+                    "example": "2024A"
+                },
+                "estatus":{
+                    "type": "boolean",
+                    "example": 1
+                }
+            }
+        },
+        "goodRequest": {
+          "properties": {
+            "ok": {
+              "type": "boolean",
+              "example": true
+            },
+            "message": {
+                "type": "object",
+                "properties": {
+                "code": {
+                    "type": "integer",
+                    "example": 200
+                },
+                "messageText":{
+                    "type": "string",
+                    "example": "........."
+                }
+                }
+            }
+          }
+        },
+        "badRequest": {
+          "properties": {
+            "ok": {
+              "type": "boolean",
+              "example": false
+            },
+            "message": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "integer",
+                  "example": 400
+                },
+                "messageText":{
+                  "type": "string",
+                  "example": "........."
+                }
+              }
+            }
+          }
+        }
+    }
+}
