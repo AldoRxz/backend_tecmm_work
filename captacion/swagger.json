@@ -1,0 +1,1766 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "servicio programas de estudio",
+      "description": "Esta api es la encargada del manejo de la información relacionada con los programas de estudio"
+    },
+    "host": "developer.tecmm.mx:3000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Carreras",
+            "description": "seccion dedicada al CRUD de la tabla Carreras"
+        }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/carrera":{
+            "get": {
+                "tags": ["Carreras"],
+                "summary": "Obtener catalogo de la tabla Carreras",
+                "description": "Obtener catalogo de la tabla Carreras",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Carreras",
+                        "schema": {
+                            "$ref": "#/definitions/carreras"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Carreras"],
+                "summary": "crear un registro en la tabla Carreras",
+                "description": "crear un registro en la tabla Carreras",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/carreras_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Carreras"],
+                "summary": "actualizar un registro en la tabla Carreras",
+                "description": "actualizar un registro en la tabla Carreras",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/carreras"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Carreras"],
+                "summary": "eliminar un registro de la tabla Carreras",
+                "description": "eliminar un registro de la tabla Carreras",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idCarrera",
+                        "description": "ID de la tabla Carreras que el cliente desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/factoresSanguineos":{
+            "get": {
+                "tags": ["factoresSanguineos"],
+                "summary": "Obtener catalogo de la tabla factoresSanguineos",
+                "description": "Obtener catalogo de la tabla factoresSanguineos",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla factoresSanguineos",
+                        "schema": {
+                            "$ref": "#/definitions/factorSanguineo"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["factoresSanguineos"],
+                "summary": "crear un registro en la tabla factoresSanguineos",
+                "description": "crear un registro en la tabla factoresSanguineos",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/factorSanguineo_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["factoresSanguineos"],
+                "summary": "actualizar un registro en la tabla factoresSanguineos",
+                "description": "actualizar un registro en la tabla factoresSanguineos",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/factorSanguineo"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["factoresSanguineos"],
+                "summary": "eliminar un registro de la tabla factoresSanguineos",
+                "description": "eliminar un registro de la tabla factoresSanguineos",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idfactorSanguineo",
+                        "description": "ID de la tabla factoresSanguineos que el cliente desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/generos":{
+            "get": {
+                "tags": ["generos"],
+                "summary": "Obtener catalogo de la tabla generos",
+                "description": "Obtener catalogo de la tabla generos",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla generos",
+                        "schema": {
+                            "$ref": "#/definitions/genero"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["generos"],
+                "summary": "crear un registro en la tabla generos",
+                "description": "crear un registro en la tabla generos",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/genero_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["generos"],
+                "summary": "actualizar un registro en la tabla generos",
+                "description": "actualizar un registro en la tabla generos",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/genero"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["generos"],
+                "summary": "eliminar un registro de la tabla generos",
+                "description": "eliminar un registro de la tabla generos",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idGenero",
+                        "description": "ID de la tabla generos que el cliente desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/examen":{
+            "get": {
+                "tags": ["examen"],
+                "summary": "Obtener catalogo de la tabla examen",
+                "description": "Obtener catalogo de la tabla examen",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla examen",
+                        "schema": {
+                            "$ref": "#/definitions/examen"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["examen"],
+                "summary": "crear un registro en la tabla examen",
+                "description": "crear un registro en la tabla examen",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/examen_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["examen"],
+                "summary": "actualizar un registro en la tabla examen",
+                "description": "actualizar un registro en la tabla examen",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/examen"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["examen"],
+                "summary": "eliminar un registro de la tabla examen",
+                "description": "eliminar un registro de la tabla examen",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idExamen",
+                        "description": "ID de la tabla examen que el cliente desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/etapas":{
+            "get": {
+                "tags": ["etapas"],
+                "summary": "Obtener catalogo de la tabla etapas",
+                "description": "Obtener catalogo de la tabla etapas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla etapas",
+                        "schema": {
+                            "$ref": "#/definitions/etapa"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["etapas"],
+                "summary": "crear un registro en la tabla etapas",
+                "description": "crear un registro en la tabla etapas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/etapa_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["etapas"],
+                "summary": "actualizar un registro en la tabla etapas",
+                "description": "actualizar un registro en la tabla etapas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/etapa"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["etapas"],
+                "summary": "eliminar un registro de la tabla etapas",
+                "description": "eliminar un registro de la tabla etapas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idEtapa",
+                        "description": "ID de la tabla etapas que el cliente desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/convocatoria":{
+            "get": {
+                "tags": ["convocatorias"],
+                "summary": "Obtener catalogo de la tabla convocatorias",
+                "description": "Obtener catalogo de la tabla convocatorias",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla convocatorias",
+                        "schema": {
+                            "$ref": "#/definitions/convocatoria"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["convocatorias"],
+                "summary": "crear un registro en la tabla convocatorias",
+                "description": "crear un registro en la tabla convocatorias",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el idExamen, idOferta, idPeriodo no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/convocatoria_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["convocatorias"],
+                "summary": "actualizar un registro en la tabla convocatorias",
+                "description": "actualizar un registro en la tabla convocatorias",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/convocatoria"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["convocatorias"],
+                "summary": "eliminar un registro de la tabla convocatorias",
+                "description": "eliminar un registro de la tabla convocatorias",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idConvocatoria",
+                        "description": "ID de la tabla etapas que el cliente desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/convocatoria/id:{idCliente}":{
+            "get": {
+                "tags": ["convocatorias"],
+                "summary": "Obtener una convocatoria registrada en la tabla convocatorias",
+                "description": "Obtener una convocatoria registrada en la tabla convocatorias",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idCliente",
+                        "description": "ID de la tabla convocatorias que el cliente desea traer",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla convocatorias",
+                        "schema": {
+                            "$ref": "#/definitions/convocatoria"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/aspitante":{
+            "get": {
+                "tags": ["aspirantes"],
+                "summary": "Obtener catalogo de la tabla aspirantes",
+                "description": "Obtener catalogo de la tabla aspirantes",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla aspirantes",
+                        "schema": {
+                            "$ref": "#/definitions/aspirante"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["aspirantes"],
+                "summary": "crear un registro en la tabla aspirantes",
+                "description": "crear un registro en la tabla aspirantes",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el idFactorSanguineo, idFactorSanguineo y idConvocatoria se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/aspirante_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["aspirantes"],
+                "summary": "actualizar un registro en la tabla aspirantes",
+                "description": "actualizar un registro en la tabla aspirantes",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/aspirante"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/aspirante/id:{idAspirante}":{
+            "get": {
+                "tags": ["aspirantes"],
+                "summary": "Obtener un aspirante registrado en la tabla aspirantes",
+                "description": "Obtener un aspitante registrado en la tabla aspirantes",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idAspirante",
+                        "description": "ID de la tabla aspirantes que el cliente desea traer",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla aspirantes",
+                        "schema": {
+                            "$ref": "#/definitions/aspirante"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/historial":{
+            "post": {
+                "tags": ["historialEtapa"],
+                "summary": "crear un registro en la tabla historialEtapa",
+                "description": "crear un registro en la tabla historialEtapa",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que idAspirante y idEtapa se encuentre registrada",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/historialEtapa_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/historial/id:{idAspirante}":{
+            "get": {
+                "tags": ["historialEtapa"],
+                "summary": "Obtener un aspirante registrado en la tabla historialEtapa",
+                "description": "Obtener un aspitante registrado en la tabla historialEtapa",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idAspirante",
+                        "description": "ID de la tabla historialEtapa que el cliente desea traer",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla aspirantes",
+                        "schema": {
+                            "$ref": "#/definitions/historialEtapa"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/medico":{
+            "get": {
+                "tags": ["medico"],
+                "summary": "Obtener catalogo de la tabla medico",
+                "description": "Obtener catalogo de la tabla medico",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla medico",
+                        "schema": {
+                            "$ref": "#/definitions/medico"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["medico"],
+                "summary": "crear un registro en la tabla medico",
+                "description": "crear un registro en la tabla medico",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el idAspirante y el idTipoSeguro se encuentren registrados",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/medico_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "carreras_post": {
+            "properties":{
+                "nombreCorto":{
+                    "type": "string",
+                    "example": "Tecmm Zap."
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "Tecmm Zapopan"
+                }
+            }
+        },
+        "carreras": {
+            "properties":{
+                "idCarrera":{
+                    "type": "integer",
+                    "example": 6
+                },
+                "nombreCorto":{
+                    "type": "string",
+                    "example": "Tecmm Zap."
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "Tecmm Zapopan"
+                }
+            }
+        },
+        "factorSanguineo": {
+            "properties":{
+                "idFactoresSanguineos":{
+                    "type": "integer",
+                    "example": 6
+                },
+                "factor":{
+                    "type": "string",
+                    "example": "AB+"
+                }
+            }
+        },
+        "factorSanguineo_post": {
+            "properties":{
+                "factor":{
+                    "type": "string",
+                    "example": "AB+"
+                }
+            }
+        },
+        "genero": {
+            "properties":{
+                "idGenero":{
+                    "type": "integer",
+                    "example": 1
+                },
+                "genero":{
+                    "type": "string",
+                    "example": "masculino"
+                }
+            }
+        },
+        "genero_post": {
+            "properties":{
+                "genero":{
+                    "type": "string",
+                    "example": "masculino"
+                }
+            }
+        },
+        "examen": {
+            "properties":{
+                "idExamen":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "collageboard"
+                }
+            }
+        },
+        "examen_post": {
+            "properties":{
+                "nombre":{
+                    "type": "string",
+                    "example": "collageboard"
+                }
+            }
+        },
+        "etapa": {
+            "properties":{
+                "idEtapa":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "REGISTRADO SIN VALIDAR"
+                }
+            }
+        },
+        "etapa_post": {
+            "properties":{
+                "nombre":{
+                    "type": "string",
+                    "example": "REGISTRADO SIN VALIDAR"
+                }
+            }
+        },
+        "convocatoria": {
+            "properties":{
+                "idConvocatoria":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "idExamen":{
+                    "type": "integer",
+                    "example": 1
+                },
+                "idOferta":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "idPeriodo":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "fechaInicio":{
+                    "type": "string",
+                    "example": "2023-10-26 14:15:07"
+                },
+                "fechaFin":{
+                    "type": "string",
+                    "example": "2024-10-26 14:15:07"
+                },
+                "fechaPagoExamen":{
+                    "type": "string",
+                    "example": "2023-12-26 14:15:07"
+                },
+                "fechaPagoInscripcion":{
+                    "type": "string",
+                    "example": "2024-02-26 14:15:07"
+                },
+                "fechaExamen":{
+                    "type": "string",
+                    "example": "2024-05-26 14:15:07"
+                },
+                "estatus":{
+                    "values": ["vigente", "no vigente", "cancelado"],
+                    "example": "vigente"
+                }
+            }
+        },
+        "convocatoria_post": {
+            "properties":{
+                "idExamen":{
+                    "type": "integer",
+                    "example": 1
+                },
+                "idOferta":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "idPeriodo":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "fechaInicio":{
+                    "type": "string",
+                    "example": "2023-10-26 14:15:07"
+                },
+                "fechaFin":{
+                    "type": "string",
+                    "example": "2024-10-26 14:15:07"
+                },
+                "fechaPagoExamen":{
+                    "type": "string",
+                    "example": "2023-12-26 14:15:07"
+                },
+                "fechaPagoInscripcion":{
+                    "type": "string",
+                    "example": "2024-02-26 14:15:07"
+                },
+                "fechaExamen":{
+                    "type": "string",
+                    "example": "2024-05-26 14:15:07"
+                },
+                "estatus":{
+                    "values": ["vigente", "no vigente", "cancelado"],
+                    "example": "vigente"
+                }
+            }
+        },
+        "aspirante": {
+            "properties":{
+                "idAspirante":{
+                    "type": "string",
+                    "example": "uui2"
+                },
+                "idFactorSanguineo":{
+                    "type": "integer",
+                    "example": 1
+                },
+                "idGenero":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "idConvocatoria":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "aldo"
+                },
+                "primerApellido":{
+                    "type": "string",
+                    "example": "rodriguez"
+                },
+                "segundoApellido":{
+                    "type": "string",
+                    "example": "ruiz"
+                },
+                "telefonoCelular":{
+                    "type": "string",
+                    "example": "3311474731"
+                },
+                "correo":{
+                    "type": "string",
+                    "example": "aldo_roman123@hotmail.com"
+                },
+                "curp":{
+                    "type": "string",
+                    "example": "RORA0131HJDCAL7"
+                },
+                "paisNacimiento":{
+                    "type": "string",
+                    "example": "mexico"
+                },
+                "estadoNacimiento":{
+                    "type": "string",
+                    "example": "jalisco"
+                },
+                "municipioNacimiento":{
+                    "type": "string",
+                    "example": "zapopan"
+                },
+                "fechaNacimiento":{
+                    "type": "string",
+                    "example": "2002-05-25 23:12:12"
+                }
+            }
+        },
+        "aspirante_post": {
+            "properties":{
+                "idAspirante":{
+                    "type": "string",
+                    "example": "uui2"
+                },
+                "idFactorSanguineo":{
+                    "type": "integer",
+                    "example": 1
+                },
+                "idGenero":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "idConvocatoria":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "aldo"
+                },
+                "primerApellido":{
+                    "type": "string",
+                    "example": "rodriguez"
+                },
+                "segundoApellido":{
+                    "type": "string",
+                    "example": "ruiz"
+                },
+                "telefonoCelular":{
+                    "type": "string",
+                    "example": "3311474731"
+                },
+                "correo":{
+                    "type": "string",
+                    "example": "aldo_roman123@hotmail.com"
+                },
+                "curp":{
+                    "type": "string",
+                    "example": "RORA0131HJDCAL7"
+                },
+                "paisNacimiento":{
+                    "type": "string",
+                    "example": "mexico"
+                },
+                "estadoNacimiento":{
+                    "type": "string",
+                    "example": "jalisco"
+                },
+                "municipioNacimiento":{
+                    "type": "string",
+                    "example": "zapopan"
+                },
+                "fechaNacimiento":{
+                    "type": "string",
+                    "example": "2002-05-25 23:12:12"
+                }
+            }
+        },
+        "historialEtapa": {
+            "properties":{
+                "idHistorial":{
+                    "type": "integer",
+                    "example": "1"
+                },
+                "idAspirante":{
+                    "type": "string",
+                    "example": "uui2"
+                },
+                "idEtapa":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "fecha":{
+                    "type": "string",
+                    "example": "2023-05-25 23:12:12"
+                }
+            }
+        },
+        "historialEtapa_post": {
+            "properties":{
+                "idAspirante":{
+                    "type": "string",
+                    "example": "uui2"
+                },
+                "idEtapa":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "fecha":{
+                    "type": "string",
+                    "example": "2023-05-25 23:12:12"
+                }
+            }
+        },
+        "medico": {
+            "properties":{
+                "idMedico":{
+                    "type": "integer",
+                    "example": 1
+                },
+                "idAspirante":{
+                    "type": "string",
+                    "example": "uui2"
+                },
+                "idTipoSeguro":{
+                    "type": "string",
+                    "example": "2"
+                },
+                "numeroSeguro":{
+                    "type": "string",
+                    "example": "4565"
+                },
+                "numeroClinica":{
+                    "type": "string",
+                    "example": "48496"
+                },
+                "contactoEmergencia":{
+                    "type": "string",
+                    "example": "3331058726"
+                },
+                "tutor":{
+                    "type": "string",
+                    "example": "Gallardo"
+                },
+                "telefonoTutor":{
+                    "type": "string",
+                    "example": "3331265897"
+                },
+                "paisTutor":{
+                    "type": "string",
+                    "example": "Mexico"
+                },
+                "estadoTutor":{
+                    "type": "string",
+                    "example": "JALISCO"
+                },
+                "municipioTutor":{
+                    "type": "string",
+                    "example": "ZAPOPAN"
+                },
+                "coloniaTutor":{
+                    "type": "string",
+                    "example": "TESISTAN"
+                },
+                "direccionTutor":{
+                    "type": "string",
+                    "example": "AV SAN MATEO 4567"
+                }
+            }
+        },
+        "medico_post": {
+            "properties":{
+                "idAspirante":{
+                    "type": "string",
+                    "example": "uui2"
+                },
+                "idTipoSeguro":{
+                    "type": "string",
+                    "example": "2"
+                },
+                "numeroSeguro":{
+                    "type": "string",
+                    "example": "4565"
+                },
+                "numeroClinica":{
+                    "type": "string",
+                    "example": "48496"
+                },
+                "contactoEmergencia":{
+                    "type": "string",
+                    "example": "3331058726"
+                },
+                "tutor":{
+                    "type": "string",
+                    "example": "Gallardo"
+                },
+                "telefonoTutor":{
+                    "type": "string",
+                    "example": "3331265897"
+                },
+                "paisTutor":{
+                    "type": "string",
+                    "example": "Mexico"
+                },
+                "estadoTutor":{
+                    "type": "string",
+                    "example": "JALISCO"
+                },
+                "municipioTutor":{
+                    "type": "string",
+                    "example": "ZAPOPAN"
+                },
+                "coloniaTutor":{
+                    "type": "string",
+                    "example": "TESISTAN"
+                },
+                "direccionTutor":{
+                    "type": "string",
+                    "example": "AV SAN MATEO 4567"
+                }
+            }
+        },
+        "goodRequest": {
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "example": true
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer",
+                "example": 200
+              },
+              "messageText":{
+                "type": "string",
+                "example": "........."
+              }
+            }
+          }
+        }
+        },
+        "badRequest": {
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "example": false
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer",
+                "example": 400
+              },
+              "messageText":{
+                "type": "string",
+                "example": "........."
+              }
+            }
+          }
+        }
+        }
+    }
+}
