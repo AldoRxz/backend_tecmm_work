@@ -1,0 +1,1198 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "servicio programas de estudio",
+      "description": "Esta api es la encargada del manejo de la información relacionada con los programas de estudio"
+    },
+    "host": "developer.tecmm.mx:3000",
+    "basePath": "/",
+    "tags": [
+        {
+            "name": "Carreras",
+            "description": "seccion dedicada al CRUD de la tabla Carreras"
+        }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/carrera":{
+            "get": {
+                "tags": ["Carreras"],
+                "summary": "Obtener catalogo de la tabla Carreras",
+                "description": "Obtener catalogo de la tabla Carreras",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Carreras",
+                        "schema": {
+                            "$ref": "#/definitions/carreras"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Carreras"],
+                "summary": "crear un registro en la tabla Carreras",
+                "description": "crear un registro en la tabla Carreras",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/carreras_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Carreras"],
+                "summary": "actualizar un registro en la tabla Carreras",
+                "description": "actualizar un registro en la tabla Carreras",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/carreras"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Carreras"],
+                "summary": "eliminar un registro de la tabla Carreras",
+                "description": "eliminar un registro de la tabla Carreras",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idCarrera",
+                        "description": "ID de la tabla Carreras que el cliente desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/prorroga":{
+            "get": {
+                "tags": ["Prorrogas"],
+                "summary": "Obtener catalogo de la tabla Prorrogas",
+                "description": "Obtener catalogo de la tabla Prorrogas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Carreras",
+                        "schema": {
+                            "$ref": "#/definitions/prorrogas"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Prorrogas"],
+                "summary": "crear un registro en la tabla Prorrogas",
+                "description": "crear un registro en la tabla Prorrogas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/prorrogas_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Prorrogas"],
+                "summary": "actualizar un registro en la tabla Prorrogas",
+                "description": "actualizar un registro en la tabla Prorrogas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el idCliente",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/prorrogas"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/prorroga/id:{idCliente}":{
+            "get": {
+                "tags": ["Prorrogas"],
+                "summary": "Obtener las prorrogas de un cliente en la tabla Prorrogas",
+                "description": "Obtener las condonaciones de un cliente en de la tabla Prorrogas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Carreras",
+                        "schema": {
+                            "$ref": "#/definitions/prorrogas"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/cuenta":{
+            "get": {
+                "tags": ["Cuentas"],
+                "summary": "Obtener catalogo de la tabla Cuentas",
+                "description": "Obtener catalogo de la tabla Cuentas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Programas",
+                        "schema": {
+                            "$ref": "#/definitions/cuentas" 
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Cuentas"],
+                "summary": "crear un registro en la tabla Cuentas",
+                "description": "crear un registro en la tabla Cuentas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir de programa para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/cuentas_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Cuentas"],
+                "summary": "actualizar un registro en la tabla Cuentas",
+                "description": "actualizar un registro en la tabla Cuentas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el ID",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/cuentas"  
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Cuentas"],
+                "summary": "eliminar un registro de la tabla Cuentas",
+                "description": "eliminar un registro de la tabla Cuentas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idCuenta",
+                        "description": "ID de la tabla Cuentas de el programa que desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/cuenta/id:{idCuenta}":{
+            "get": {
+                "tags": ["Cuentas"],
+                "summary": "Obtener la cuenta de un cliente de la tabla Cuentas",
+                "description": "Obtener la cuenta de un clinte de la tabla Cuentas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Programas",
+                        "schema": {
+                            "$ref": "#/definitions/cuentas" 
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/condonacion":{
+            "get": {
+                "tags": ["Condonacion"],
+                "summary": "Obtener catalogo de la tabla Condonacion",
+                "description": "Obtener catalogo de la tabla Condonacion",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Carreras",
+                        "schema": {
+                            "$ref": "#/definitions/condonacion"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Condonacion"],
+                "summary": "crear un registro en la tabla Condonacion",
+                "description": "crear un registro en la tabla Condonacion",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/condonacion_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Condonacion"],
+                "summary": "actualizar un registro en la tabla Condonacion",
+                "description": "actualizar un registro en la tabla Condonacion",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir del cliente para actualizar en la bd, el parametro para la actualización es el idCliente",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/condonacion"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Se pudo actualizar el registro",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/condonacion/id:{idCliente}":{
+            "get": {
+                "tags": ["Condonacion"],
+                "summary": "Obtener las condonaciones de un cliente en la tabla Condonacion",
+                "description": "Obtener las condonaciones de un cliente en la tabla Condonacion",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Carreras",
+                        "schema": {
+                            "$ref": "#/definitions/condonacion"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/tarjeta":{
+            "get": {
+                "tags": ["Tarjetas"],
+                "summary": "Devuelve la lista de tarjetas registradas de un cliente de la tabla Tarjetas",
+                "description": "Devuelve la lista de tarjetas registradas de un cliente de la tabla Tarjetas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Programas",
+                        "schema": {
+                            "$ref": "#/definitions/tarjeta" 
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Tarjetas"],
+                "summary": "Crear un registro en la tabla Tarjetas",
+                "description": "Crear un registro en la tabla Tarjetas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir de programa para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/tarjeta_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Tarjetas"],
+                "summary": "Eliminar las tarjetas registradas por un cliente de la tabla Tarjetas",
+                "description": "Eliminar las tarjetas registradas por un cliente de la tabla Tarjetas",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idCuenta",
+                        "description": "ID del cliente de la tabla Tarjetas de el programa que desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        },
+        "/bitacora":{
+            "get": {
+                "tags": ["Bitacora"],
+                "summary": "Obtener catalogo de la tabla Bitacora",
+                "description": "Obtener catalogo de la tabla Bitacora",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "No ocurrio ningún error por lo que hay que regresar un arreglo con los multiples registros de la tabla Programas",
+                        "schema": {
+                            "$ref": "#/definitions/bitacora" 
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Bitacora"],
+                "summary": "Crear un registro en la tabla Bitacora",
+                "description": "Crear un registro en la tabla Bitacora",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "datos a recibir de programa para registrar en la bd, Realizar las siguientes validaciones: <br> *validar que ningún dato este vacio mediante express-validator <br> *validar que el nombre no se encuentre registrado",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/bitacora_post"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "registro exitoso",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "En caso de algún error retornar el código http correspondiente y el mensaje de su causa",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Bitacora"],
+                "summary": "eliminar un registro de la tabla Bitacora",
+                "description": "eliminar un registro de la tabla Bitacora",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-token",
+                        "description": "token generado en el login para autenticar al usuario",
+                        "required": true,
+                        "type": "string",
+                        "paramType": "header"
+                    },
+                    {
+                        "in": "path",
+                        "name": "idCuenta",
+                        "description": "ID del cliente de la tabla Tarjetas de el programa que desea eliminar",
+                        "required": true,
+                        "type": "integer",
+                        "paramType": "path"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "eliminación exitosa",
+                        "schema": {
+                            "$ref": "#/definitions/goodRequest"
+                        }
+                    },
+                    "default":{
+                        "description": "no se pudo llevar a cabo la eliminación",
+                        "schema": {
+                            "$ref": "#/definitions/badRequest"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "carreras_post": {
+            "properties":{
+                "nombreCorto":{
+                    "type": "string",
+                    "example": "Tecmm Zap."
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "Tecmm Zapopan"
+                }
+            }
+        },
+        "carreras": {
+            "properties":{
+                "idCarrera":{
+                    "type": "integer",
+                    "example": 6
+                },
+                "nombreCorto":{
+                    "type": "string",
+                    "example": "Tecmm Zap."
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "Tecmm Zapopan"
+                }
+            }
+        },
+        "prorrogas": {
+            "properties":{
+                "idProrroga":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "idServicio":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "idCliente":{
+                    "type": "string",
+                    "example": "RORA010126HJCDZLA7"
+                },
+                "detalle":{
+                    "type": "string",
+                    "example": "baja temporal de 6 meses"
+                },
+                "fechaExpedicion":{
+                    "type": "string",
+                    "example": "2023-10-27 23:45:12"
+                },
+                "fechaVencimiento":{
+                    "type": "string",
+                    "example": "2023-04-12 20:35:45"
+                }
+            }
+        },
+        "prorrogas_post": {
+            "properties":{
+                "idServicio":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "idCliente":{
+                    "type": "string",
+                    "example": "RORA010126HJCDZLA7"
+                },
+                "detalle":{
+                    "type": "string",
+                    "example": "baja temporal de 6 meses"
+                },
+                "fechaExpedicion":{
+                    "type": "string",
+                    "example": "2023-10-27 23:45:12"
+                },
+                "fechaVencimiento":{
+                    "type": "string",
+                    "example": "2023-04-12 20:35:45"
+                }
+            }
+        },
+        "cuentas": {
+            "properties":{
+                "idCuenta":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "banco":{
+                    "type": "string",
+                    "example": "bancomer"
+                },
+                "convenio":{
+                    "type": "string",
+                    "example": "0195427487"
+                },
+                "claveBancaria":{
+                    "type": "string",
+                    "example": "451897993523320"
+                }
+            }
+        },
+        "cuentas_post": {
+            "properties":{
+                "banco":{
+                    "type": "string",
+                    "example": "bancomer"
+                },
+                "convenio":{
+                    "type": "string",
+                    "example": "0195427487"
+                },
+                "claveBancaria":{
+                    "type": "string",
+                    "example": "451897993523320"
+                }
+            }
+        },
+        "condonacion": {
+            "properties":{
+                "idCondonacion":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "idServicio":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "idCliente":{
+                    "type": "string",
+                    "example": "RORA010126HJCDZLA7"
+                },
+                "detalle":{
+                    "type": "string",
+                    "example": "promedio"
+                },
+                "fechaExpedicion":{
+                    "type": "string",
+                    "example": "2023-10-27 23:45:12"
+                },
+                "estatus":{
+                    "values": ["elaborado", "validado", "verificado", "autorizado"],
+                    "example": "validado"
+                }
+            }
+        },
+        "condonacion_post": {
+            "properties":{
+                "idServicio":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "idCliente":{
+                    "type": "string",
+                    "example": "RORA010126HJCDZLA7"
+                },
+                "detalle":{
+                    "type": "string",
+                    "example": "promedio"
+                },
+                "fechaExpedicion":{
+                    "type": "string",
+                    "example": "2023-10-27 23:45:12"
+                },
+                "estatus":{
+                    "values": ["elaborado", "validado", "verificado", "autorizado"],
+                    "example": "elaborado"
+                }
+            }
+        },
+        "tarjeta": {
+            "properties":{
+                "idTarjeta":{
+                    "type": "integer",
+                    "example": 3
+                },
+                "idCliente":{
+                    "type": "string",
+                    "example": "RORA010131HJJCDZLA2"
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "eduardo"
+                },
+                "correo":{
+                    "type": "string",
+                    "example": "za20012307@zapopan.tecmm.edu.mx"
+                },
+                "bin":{
+                    "type": "string",
+                    "example": "422222"
+                },
+                "token":{
+                    "type": "string",
+                    "example": "2374725873895429610"
+                },
+                "anioExpiracion":{
+                    "type": "string",
+                    "example": "2028"
+                },
+                "mesExpiracion":{
+                    "type": "string",
+                    "example": "3"
+                },
+                "tipo":{
+                    "values": ["vi", "mc"],
+                    "example": "vi"
+                },
+                "terminacion":{
+                    "type": "string",
+                    "example": "77777"
+                }
+            }
+        },
+        "tarjeta_post": {
+            "properties":{
+                "idCliente":{
+                    "type": "string",
+                    "example": "RORA010131HJJCDZLA2"
+                },
+                "nombre":{
+                    "type": "string",
+                    "example": "eduardo"
+                },
+                "correo":{
+                    "type": "string",
+                    "example": "za20012307@zapopan.tecmm.edu.mx"
+                },
+                "bin":{
+                    "type": "string",
+                    "example": "422222"
+                },
+                "token":{
+                    "type": "string",
+                    "example": "2374725873895429610"
+                },
+                "anioExpiracion":{
+                    "type": "string",
+                    "example": "2028"
+                },
+                "mesExpiracion":{
+                    "type": "string",
+                    "example": "3"
+                },
+                "tipo":{
+                    "values": ["vi", "mc"],
+                    "example": "vi"
+                },
+                "terminacion":{
+                    "type": "string",
+                    "example": "77777"
+                }
+            }
+        },
+        "bitacora": {
+            "properties":{
+                "idBitacora":{
+                    "type": "integer",
+                    "example": 2
+                },
+                "referencia":{
+                    "type": "string",
+                    "example": "pago212"
+                },
+                "monto":{
+                    "type": "deciaml",
+                    "example": "200.0"
+                },
+                "fecha":{
+                    "type": "string",
+                    "example": "2023-10-27 23:45:12"
+                },
+                "estatus":{
+                    "type": "boolean",
+                    "example": "1"
+                }
+            }
+        },
+        "bitacora_post": {
+            "properties":{
+                "referencia":{
+                    "type": "string",
+                    "example": "pago212"
+                },
+                "monto":{
+                    "type": "deciaml",
+                    "example": "200.0"
+                },
+                "fecha":{
+                    "type": "string",
+                    "example": "2023-10-27 23:45:12"
+                },
+                "estatus":{
+                    "type": "boolean",
+                    "example": "1"
+                }
+            }
+        },
+        "goodRequest": {
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "example": true
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer",
+                "example": 200
+              },
+              "messageText":{
+                "type": "string",
+                "example": "........."
+              }
+            }
+          }
+        }
+        },
+        "badRequest": {
+        "properties": {
+          "ok": {
+            "type": "boolean",
+            "example": false
+          },
+          "message": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "type": "integer",
+                "example": 400
+              },
+              "messageText":{
+                "type": "string",
+                "example": "........."
+              }
+            }
+          }
+        }
+        }
+    }
+}
